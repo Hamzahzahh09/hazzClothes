@@ -1,5 +1,7 @@
 var xstatus = true;
 var nb = false;
+var mode = false;
+
 
 const tombol = document.getElementById('tombol');
 const menu = document.getElementById('menu');
@@ -33,4 +35,24 @@ document.addEventListener('scroll', () => {
         }
     }
 
+})
+
+function darkMode() {
+    if (mode) {
+        document.documentElement.classList.remove('dark');
+        mode = false;
+        localStorage.setItem('theme', 'light')
+    } else {
+        document.documentElement.classList.add('dark');
+        mode = true;
+        localStorage.setItem('theme', 'dark')
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedMode = localStorage.getItem('theme');
+    if (savedMode === 'dark') {
+        document.documentElement.classList.add('dark');
+        mode = true;
+    }
 })

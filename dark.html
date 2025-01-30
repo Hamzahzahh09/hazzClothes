@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darkmode</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="h-screen flex items-center justify-center bg-white dark:bg-black">
+    <button onclick="darkMode()" class="p-5 border-2 border-gray-500 text-black dark:text-white">Pencet ini!</button>
+    <script>
+        var mode = false;
+
+        function darkMode() {
+            if (mode) {
+                document.documentElement.classList.remove('dark');
+                mode = false;
+                localStorage.setItem('theme', 'light')
+            } else {
+                document.documentElement.classList.add('dark');
+                mode = true;
+                localStorage.setItem('theme', 'dark')
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('theme');
+            if (savedMode === 'dark') {
+                document.documentElement.classList.add('dark');
+                mode = true;
+            }
+        })
+    </script>
+</body>
+</html>
